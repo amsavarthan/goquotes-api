@@ -1,0 +1,12 @@
+{
+	"ImportPath": "quotes-rest-api",
+	"GoVersion": "go1.13",
+	"GodepVersion": "v80",
+	"Deps": [
+		{
+			"ImportPath": "github.com/gorilla/mux",
+			"Comment": "v1.7.4-1-g948bec3",
+			"Rev": "948bec34b5168796bf3fc4dbb09215baa970351a"
+		}
+	]
+}
