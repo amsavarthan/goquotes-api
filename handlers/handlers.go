@@ -122,11 +122,7 @@ func GetTags(w http.ResponseWriter, r *http.Request) {
 			Status:  http.StatusOK,
 			Message: "success",
 			Count:   len(tags),
-<<<<<<< HEAD
-			Tags:     tags,
-=======
 			Tags:    tags,
->>>>>>> 6ec88778b32e9e715e2a89188e3454200b20b2b3
 		})
 		w.Write(res)
 
