@@ -9,4 +9,5 @@ type Response struct {
 	Count   int         `json:"count"`
 	Quotes  []db.Quote  `json:"quotes,omitempty"`
 	Authors []db.Author `json:"authors,omitempty"`
+	Tag     []db.Tag    `json:"tags,omitempty"`
 }
