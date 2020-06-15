@@ -1,0 +1,209 @@
+swagger: '2.0'
+info:
+  description: This API is used to get random quotes written in GO lang
+  version: 1.0.0
+  title: Go Quotes API
+  contact:
+    email: amsavarthan.a@gmail.com
+    name: Amsavarthan Lv
+  license:
+    name: MIT License
+    url: 'https://github.com/lvamsavarthan/goquotes-api/blob/master/LICENSE'
+host: goquotes-api.herokuapp.com
+basePath: /api/v1
+tags:
+  - name: Get Random Quote(s)
+    description: To get random quote(s) from server
+  - name: List All Datas
+    description: To list all the data's from server
+paths:
+  /random:
+    get:
+      operationId: random
+      tags:
+        - Get Random Quote(s)
+      summary: Get random quote(s)
+      description: Returns number of random quotes
+      produces:
+        - application/json
+      parameters:
+        - name: count
+          in: query
+          description: Number of quotes to return
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: Successful operation
+          schema:
+            $ref: '#/definitions/QuotesResponse'
+  '/random/{count}':
+    get:
+      operationId: random-filtered
+      tags:
+        - Get Random Quote(s)
+      summary: Get random quote(s) filtered by given type
+      description: Returns number of random quotes filtered by type
+      produces:
+        - application/json
+      parameters:
+        - name: count
+          in: path
+          description: Number of quotes to return
+          required: true
+          type: integer
+        - name: type
+          in: query
+          description: 'Filter quotes by type (author|tag)'
+          required: true
+          type: string
+        - name: val
+          in: query
+          description: Filter quotes by value of type
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Successful operation
+          schema:
+            $ref: '#/definitions/QuotesResponse'
+        '400':
+          description: Invalid request
+  /all/quotes:
+    get:
+      operationId: getAllQuotes
+      tags:
+        - List All Datas
+      summary: Get all quotes
+      description: Returns every quotes available in the server
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: Successful operation
+          schema:
+            $ref: '#/definitions/QuotesResponse'
+  /all/authors:
+    get:
+      operationId: getAllAuthors
+      tags:
+        - List All Datas
+      summary: Get all authors
+      description: Returns every authors available in the server
+      produces:
+        - application/json
+      parameters: []
+      responses:
+        '200':
+          description: Successful operation
+          schema:
+            $ref: '#/definitions/AuthorsResponse'
+  /all/tags:
+    get:
+      operationId: getAllTags
+      tags:
+        - List All Datas
+      summary: Get all tags
+      description: Returns every tags available in the server
+      produces:
+        - application/json
+      responses:
+        '200':
+          description: Successful operation
+          schema:
+            $ref: '#/definitions/TagsResponse'
+          examples: {}
+  /all:
+    get:
+      operationId: getAllQuotesFiltered
+      tags:
+        - List All Datas
+      summary: Get all data filtered by given type
+      description: Returns all quotes filtered by given type and value
+      produces:
+        - application/json
+      parameters:
+        - name: type
+          in: query
+          description: 'Filter quotes by type (author|tag)'
+          required: true
+          type: string
+        - name: val
+          in: query
+          description: Filter quotes by value of type
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Successful operation
+          schema:
+            $ref: '#/definitions/QuotesResponse'
+definitions:
+  Quote:
+    type: object
+    properties:
+      text:
+        type: string
+      author:
+        type: string
+      tag:
+        type: string
+  Author:
+    type: object
+    properties:
+      name:
+        type: string
+      count:
+        type: integer
+  Tag:
+    type: object
+    properties:
+      name:
+        type: string
+      count:
+        type: integer
+  QuotesResponse:
+    type: object
+    properties:
+      status:
+        type: integer
+      message:
+        type: string
+      count:
+        type: integer
+      quotes:
+        type: array
+        items:
+          $ref: '#/definitions/Quote'
+  AuthorsResponse:
+    type: object
+    properties:
+      status:
+        type: integer
+      message:
+        type: string
+      count:
+        type: integer
+      authors:
+        type: array
+        items:
+          $ref: '#/definitions/Author'
+  TagsResponse:
+    type: object
+    properties:
+      status:
+        type: integer
+      message:
+        type: string
+      count:
+        type: integer
+      tags:
+        type: array
+        items:
+          $ref: '#/definitions/Tag'
+schemes:
+  - https
+produces:
+  - application/json
+securityDefinitions: {}
