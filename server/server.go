@@ -9,6 +9,7 @@ import (
 	"github.com/gorilla/mux"
 )
 
+//InitializeServer is used to establish connection with server
 func InitializeServer() error {
 
 	router := mux.NewRouter().StrictSlash(true)
