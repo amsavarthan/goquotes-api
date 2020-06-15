@@ -1,6 +1,6 @@
 swagger: '2.0'
 info:
-  description: This API is used to get random quotes written in GO lang
+  description: Go Quotes is a free, open source quotations API. It was built when I was getting started with GO lang. The sample database includes 500+ quotes.
   version: 1.0.0
   title: Go Quotes API
   contact:
