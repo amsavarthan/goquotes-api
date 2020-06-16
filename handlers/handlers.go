@@ -31,6 +31,7 @@ func HandleHome(w http.ResponseWriter, r *http.Request) {
 
 	//setting the header
 	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 
 	//Encoding quote entity into JSON
 	res, _ := json.Marshal(Response{
@@ -46,7 +47,9 @@ func HandleHome(w http.ResponseWriter, r *http.Request) {
 
 // GetAllQuotes returns all quotes from original data
 func GetAllQuotes(w http.ResponseWriter, r *http.Request) {
+
 	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 
 	if len(quotes) == 0 {
 
@@ -76,6 +79,7 @@ func GetAllQuotes(w http.ResponseWriter, r *http.Request) {
 func GetAuthors(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 
 	if len(authors) == 0 {
 
@@ -105,6 +109,7 @@ func GetAuthors(w http.ResponseWriter, r *http.Request) {
 func GetTags(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 
 	if len(tags) == 0 {
 
@@ -134,6 +139,7 @@ func GetTags(w http.ResponseWriter, r *http.Request) {
 func GetRandQuotes(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 
 	count, _ := strconv.Atoi(mux.Vars(r)["count"])
 
@@ -176,6 +182,7 @@ First we filter the original quotes data and stored the filtered data in resQuot
 func GetAllQuotesOfAuthors(w http.ResponseWriter, r *http.Request, author string) {
 
 	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 	//used to store the filtered quotes
 	resQuotes := make([]db.Quote, 0, 0)
 
@@ -218,6 +225,7 @@ First we filter the original quotes data and stored the filtered data in resQuot
 func GetAllQuotesOfTag(w http.ResponseWriter, r *http.Request, tag string) {
 
 	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 
 	//used to store the filtered quotes
 	resQuotes := make([]db.Quote, 0, 0)
@@ -263,6 +271,7 @@ to get the value at that index.
 func GetRandQuotesByAuthor(w http.ResponseWriter, r *http.Request, author string, count int) {
 
 	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 	//used to store the filtered quotes
 	resAuthorQuotes := make([]db.Quote, 0, 0)
 
@@ -283,8 +292,6 @@ func GetRandQuotesByAuthor(w http.ResponseWriter, r *http.Request, author string
 		w.Write(res)
 
 	} else {
-
-		w.Header().Set("Content-Type", "application/json")
 
 		if count > len(resAuthorQuotes) {
 
@@ -331,6 +338,7 @@ to get the value at that index.
 func GetRandQuotesByTag(w http.ResponseWriter, r *http.Request, tag string, count int) {
 
 	w.Header().Set("Content-Type", "application/json")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 	//used to store the filtered quotes
 	resTagQuotes := make([]db.Quote, 0, 0)
 
@@ -351,8 +359,6 @@ func GetRandQuotesByTag(w http.ResponseWriter, r *http.Request, tag string, coun
 		w.Write(res)
 
 	} else {
-
-		w.Header().Set("Content-Type", "application/json")
 
 		if count > len(resTagQuotes) {
 
