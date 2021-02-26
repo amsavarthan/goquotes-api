@@ -14,9 +14,11 @@ GO Quotes is a free, open source quotations API. It was built when I was getting
 
 ## Server
 
+**Note : The api will not work as it was hosted under free tier at Heroku & it has been exhausted due to high traffic. So clone and host your version of API and test them 🙂**
+
 | Name         |   URL                                        | Description    
 |--------------|----------------------------------------------|-------------------------------------------
-| Production   |  https://goquotes-api.herokuapp.com/api/v1/          | Synced with the master branch of this repo
+| Production   |  ~~https://goquotes-api.herokuapp.com/api/v1/~~          | Synced with the master branch of this repo
 
 ## API Methods
 
